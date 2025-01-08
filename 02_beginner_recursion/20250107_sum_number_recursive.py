@@ -16,10 +16,11 @@ def sum_numbers_recursive(numbers: list) -> int:
         All elements will be integers. Solve this recursively.
 
     Time complexity: 
-        O(n) as we make n recursive calls.
+        O(n^2) as we make n recursive calls and use sliced subarrays
 
     Space complexity: 
-        O(n) due to the recursive call stack.
+        O(n^2) due to the recursive call stack and sliced subarrays
+    
 
     """
 
