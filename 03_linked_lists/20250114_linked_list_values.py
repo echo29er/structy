@@ -9,7 +9,7 @@ def linked_list_values (head: Node) -> list:
         Write a function, linked_list_values, that takes in the head of a linked list as an argument. The function should return a list containing all values of the nodes in the linked list.
 
     Args:
-        head (str): the head of a linked list 
+        head (Node): the head of a linked list 
 
     Returns:
         A list 

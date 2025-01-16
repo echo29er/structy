@@ -9,7 +9,7 @@ def sum_list (head: Node) -> list:
         Write a function, sum_list, that takes in the head of a linked list containing numbers as an argument. The function should return the total sum of all values in the linked list.
 
     Args:
-        head (str): the head of a linked list 
+        head (Node): the head of a linked list 
 
     Returns:
         Int
