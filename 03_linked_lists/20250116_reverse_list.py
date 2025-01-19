@@ -9,7 +9,7 @@ def reverse_list (head: Node) -> Node:
         Write a function, reverse_list, that takes in the head of a linked list as an argument. The function should reverse the order of the nodes in the linked list in-place and return the new head of the reversed linked list.
 
     Args:
-        head (str): the head of a linked list
+        head (Node): the head of a linked list
 
     Returns:
         Node
