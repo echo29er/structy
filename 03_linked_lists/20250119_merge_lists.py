@@ -41,7 +41,8 @@ def merge_lists (head_1: Node, head_2: Node) -> Node:
 
     # As we know that both input lists contain increasing sorted numbers, we can compare each value in the list in a consecutive way i.e. we do not need to use a sorting algorithm. 
     # We can use a sentinel or dummy node to start the list, and build from it. We can then return its next value at the end. 
-    # We point tail equal to sentinel as we need to traverse the list with tail as it is the pointer of the end of the list, but we need to also retain sentinel at the head of the list so we can return the .next value at the end. 
+    # We point tail equal to sentinel as we need to traverse the list with tail as it is the pointer of the end of the list,
+    # but we need to also retain sentinel at the head of the list so we can return the .next value at the end. 
     # To the tail we then keep adding the list_pointer value which is smallest next, and traversing tail. 
     # We can determine which list we've pointed a node to, so we can then traverse that list further. 
     # If there are no further nodes in a list then we simply assign tail.next to the pointer with nodes. 
