@@ -41,7 +41,7 @@ def depth_first_values (root: Node) -> list:
     # When we have a stack, we can then start saving values. 
     # We traverse the branch by popping the node of the stack, and adding its value to the list. 
     # We then  add the node's right child node then left child node to the stack.
-    # This is important as the stack is Last In First Out therefore we want to process the left child first.
+    # This is important as the stack is Last In First Out.
 
     # Instantiate the list and the stack
     visited_nodes_values = []
