@@ -45,7 +45,6 @@ def tree_sum (root: Node) -> int:
     #      Each time we unpack and concatenate lists, we create a new list and copy elements
     # Pre-order traversal is achieved by processing root before recursive calls
 
-    # Instantiate the list and the stack
     # Base case we have an empty root
     if root is None: 
         return 0
