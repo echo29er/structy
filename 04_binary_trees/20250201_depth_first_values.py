@@ -45,22 +45,22 @@ def depth_first_values (root: Node) -> list:
 
     # Instantiate the list and the stack
     visited_nodes_values = []
-    branch_traversal = [] # stack
+    stack = [] # stack
 
     # Base case we have an empty root
     if root is None: 
         return []
     else: 
-        branch_traversal.append(root) # Add the root to the stack
+        stack.append(root) # Add the root to the stack
         
-    while branch_traversal: # While the list has nodes
-        current = branch_traversal.pop() # Traverse the branch by taking the top of the stack
+    while stack: # While the list has nodes
+        current = stack.pop() # Traverse the branch by taking the top of the stack
         visited_nodes_values.append(current.val) # Add the popped node's value to the list. 
 
         if current.right is not None: # We must add the right child first so that it is processed after the left
-            branch_traversal.append(current.right)
+            stack.append(current.right)
         if current.left is not None: 
-            branch_traversal.append(current.left) # We add the left child second so that it is processed first (LiFo).
+            stack.append(current.left) # We add the left child second so that it is processed first (LiFo).
     
     return visited_nodes_values
 
