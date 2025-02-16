@@ -12,8 +12,9 @@ def tree_includes (root: Node, target: Union[str, int]) -> bool:
         Write a function, tree_includes, that takes in the root of a binary tree and a target value. 
         The function should return a boolean indicating whether or not the value is contained in the tree.
 
-    Args:
+    Parameters:
         root (Node): the root of the binary tree.
+        target: value to find in the tree.
 
     Returns:
         bool: If the target value exists in the tree. 
@@ -36,10 +37,11 @@ def tree_includes (root: Node, target: Union[str, int]) -> bool:
     """
 
     ## RECURSIVE APPROACH
-    # Base case: empty node returns False
-    # Check current node's value first
-    # If not found, recursively search left and right subtrees
-    # Return True if target is found in either subtree
+    # Base case: empty node returns 0
+    # For each node:
+    #   - Count current node (1 if matches target, 0 if not)
+    #   - Add counts from left and right subtrees recursively
+    # Return total count
 
     # Base case we have an empty root
     if root is None: 
