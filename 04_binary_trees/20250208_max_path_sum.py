@@ -41,7 +41,7 @@ def max_path_sum (root: Node) -> int:
 
     # For depth first traversal, we start by instantiating a stack to traverse the tree. 
     # The tree is assumed to never be empty.
-    # The stack allows us to work Last in First out (FiFo). 
+    # The stack allows us to work Last in First out (LiFo). 
     # We add the children in right to left order to the stack to maintain LiFo.
     # We Pop the first element in the stack to give us depth traversal.
     # What's new about this situation is that we need to sum each branch.
