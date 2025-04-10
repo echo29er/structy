@@ -1,18 +1,21 @@
-
-def largest_component(graph): 
+def shortest_path(edges, node_A, node_B): 
     """
     Function Purpose: 
-        Write a function, largest_component, that takes in the adjacency list of an undirected graph. 
-        The function should return the size of the largest connected component in the graph.
+        Write a function, shortest_path, that takes in a list of edges for an undirected graph and two nodes (node_A, node_B). 
+        The function should return the length of the shortest path between node_A and node_B. 
+        Consider the length as the number of edges in the path, not the number of nodes. 
+        If there is no path between A and B, then return -1. 
     
     Parameters:
-        graph (list): an adjaceny list of an undirected graph.
+        edges (list of lists): a list that contains pairs of nodes each in a list. 
+        node_A (str): the source node
+        node_B (str)" the destination node 
 
     Returns:
-        int: The size of the largest connected component in the graph i.e. the graph with the most nodes.
+        int: The number of edges traversed.
         
     Assumptions: 
-        N/A
+        * You can assume that A and B exist as nodes in the graph.
 
     Time complexity: 
         O(e) number of edges
@@ -22,16 +25,17 @@ def largest_component(graph):
 
     """
 
-    """ 
-    INITIAL THOUGHTS 
-    * We need to build up a dictionary of the edges to create an adjacency list.
+    
+    ## APPROACH
+    # We don't handle an empty graph
+    # We should use a breadth first search using an adjacency list. 
+    # The BFS explores nodes level by level.
+
+    ## IMPLEMENTATION
+    # Instantiate a queue to track the nodes to visit, a visited set to avoid cycels, and a dictionary to keep track of the distance. 
+
     
     
-    """
-    
-    # Handle empty graph
-    if not graph: 
-        return 0
     
     # Initialise a set to make use of a look up of O(1) and initialise the largest component
     visited = set()
