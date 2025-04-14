@@ -1,3 +1,5 @@
+from collections import deque
+
 def shortest_path(edges, node_A, node_B): 
     """
     Function Purpose: 
@@ -9,7 +11,7 @@ def shortest_path(edges, node_A, node_B):
     Parameters:
         edges (list of lists): a list that contains pairs of nodes each in a list. 
         node_A (str): the source node
-        node_B (str)" the destination node 
+        node_B (str): the destination node 
 
     Returns:
         int: The number of edges traversed.
@@ -33,84 +35,119 @@ def shortest_path(edges, node_A, node_B):
 
     ## IMPLEMENTATION
     # Instantiate a queue to track the nodes to visit, a visited set to avoid cycels, and a dictionary to keep track of the distance. 
-
-    
-    
     
     # Initialise a set to make use of a look up of O(1) and initialise the largest component
-    visited = set()
-    largest = 0 
+    graph = construct_graph(edges)
 
-    for node in graph: 
-        if node not in visited: 
-            component_size = explore(graph, node, visited)
-            largest = max(largest, component_size)
-    
-    return largest
-    
-def explore(graph, current, visited):
-    if current in visited: 
-        return 0 # already visited so do not count
-    
-    visited.add(current)
-    graph_count = 1
+    # Keep track of visited nodes to avoid cycles
+    visited = set([ node_A ])
 
-    # Explore and count neighbours
-    for neighbour in graph[current]:
-        graph_count += explore(graph, neighbour, visited)
+    # Queue stores tuples of (node, distance_from_start)
+    # Using deque for efficient O(1) popleft operations
+    queue = deque([ (node_A, 0) ])
 
-    return graph_count
+    # BFS implementation
+    while queue: 
+        # Get the next node and its distance from the start
+        node, distance = queue.popleft()
 
+        # If we've reached our destination, return the distance
+        if node == node_B:
+            return distance 
+        
+        # Explore all unvisited neighbors
+        for neighbour in graph[node]:
+            if neighbour not in visited: 
+                # Mark as visited to avoid cycles
+                visited.add(neighbour)
+                # Add to queue with incremented distance
+                queue.append((neighbour, distance + 1))
+
+    # If we've exhausted all nodes without finding node_B,
+    # there is no path between A and B
+    return -1
+
+# Create adjaceny list
+def construct_graph(edges):
+    """
+    Convert a list of edges into an adjacency list representation.
+    For undirected graphs, each edge is added in both directions.
+    """
+    graph = {}
+    for edge in edges: 
+        start, end = edge # unpack the list
+
+        # Ensure both nodes exist as keys in the graph
+        if start not in graph: # add key to the dictionary
+            graph[start] = []
+        if end not in graph: 
+            graph[end] = []
+        
+        graph[start].append(end) # add both edges to the dictionary
+        graph[end].append(start)
+
+    return graph
 
 ### TEST CASES
 
 def test_a():
-    return largest_component({
-  0: [8, 1, 5],
-  1: [0],
-  5: [0, 8],
-  8: [0, 5],
-  2: [3, 4],
-  3: [2, 4],
-  4: [3, 2]
-}) # -> 4
+    edges = [
+  ['w', 'x'],
+  ['x', 'y'],
+  ['z', 'y'],
+  ['z', 'v'],
+  ['w', 'v']
+]
+    return shortest_path(edges, 'w', 'z') # -> 2
 
 def test_b():
-    return largest_component({
-  1: [2],
-  2: [1,8],
-  6: [7],
-  9: [8],
-  7: [6, 8],
-  8: [9, 7, 2]
-}) # -> 6
+    edges = [
+  ['w', 'x'],
+  ['x', 'y'],
+  ['z', 'y'],
+  ['z', 'v'],
+  ['w', 'v']
+]
+
+    return shortest_path(edges, 'y', 'x') # -> 1
 
 def test_c():
-    return largest_component({
-  3: [],
-  4: [6],
-  6: [4, 5, 7, 8],
-  8: [6],
-  7: [6],
-  5: [6],
-  1: [2],
-  2: [1]
-}) # -> 5
+    edges = [
+  ['a', 'c'],
+  ['a', 'b'],
+  ['c', 'b'],
+  ['c', 'd'],
+  ['b', 'd'],
+  ['e', 'd'],
+  ['g', 'f']
+]
+
+    return shortest_path(edges, 'a', 'e') # -> 3
 
 def test_d():
-   return largest_component({}) # -> 0
+    edges = [
+  ['a', 'c'],
+  ['a', 'b'],
+  ['c', 'b'],
+  ['c', 'd'],
+  ['b', 'd'],
+  ['e', 'd'],
+  ['g', 'f']
+]
+    return shortest_path(edges, 'e', 'c') # -> 2
 
 def test_e():
-    return largest_component({
-  0: [4,7],
-  1: [],
-  2: [],
-  3: [6],
-  4: [0],
-  6: [3],
-  7: [0],
-  8: []
-}) # -> 3
+    edges = [
+  ['a', 'c'],
+  ['a', 'b'],
+  ['c', 'b'],
+  ['c', 'd'],
+  ['b', 'd'],
+  ['e', 'd'],
+  ['g', 'f']
+]
+
+    return shortest_path(edges, 'b', 'g') # -> -1
 
 ### EXECUTE TESTS
 print(test_a())
