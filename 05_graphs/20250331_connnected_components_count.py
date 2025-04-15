@@ -54,9 +54,7 @@ def explore(graph, current, visited):
 
     return True
 
-
 ### TEST CASES
-
 def test_a():
     return connected_components_count({
   0: [8, 1, 5],
@@ -68,7 +66,6 @@ def test_a():
   4: [3, 2]
 }) # -> 2
 
-
 def test_b():
     return connected_components_count({
   0: [8, 1, 5],
@@ -79,7 +76,6 @@ def test_b():
   3: [2, 4],
   4: [3, 2]
 }) # -> 2
-
 
 def test_c():
     return connected_components_count({
@@ -93,12 +89,8 @@ def test_c():
   2: [1]
 }) # -> 3
 
-
-
 def test_d():
    return connected_components_count({}) # -> 0
-
-
 
 def test_e():
     return connected_components_count({
@@ -112,10 +104,7 @@ def test_e():
   8: []
 }) # -> 5
 
-
-
 ### EXECUTE TESTS
-
 print(test_a())
 print(test_b())
 print(test_c())
