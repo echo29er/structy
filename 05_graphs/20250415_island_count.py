@@ -32,7 +32,7 @@ def island_count(grid):
     # As the grid is square the length of grid[0] will return the height
     
     # Instantiate a set to track visited cells
-    # A set has o(1) lookup and can contain unique values
+    # A set has o(1) lookup and can only contain unique values
     visited = set() 
     
     # Instantiate a count and initialise it to 0
