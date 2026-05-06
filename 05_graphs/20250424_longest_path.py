@@ -9,7 +9,7 @@ def longest_path(graph: Dict[str, List[str]]) -> int:
         A path may start and end at any two nodes. The length of a path is considered the number of edges in the path, not the number of nodes. 
 
     Parameters:
-        * graph - an adjacency list for a directec acyclic graph.
+        * graph - an adjacency list for a directed acyclic graph.
 
     Returns:
         int: the length of the longest path within the graph.
